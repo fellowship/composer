@@ -236,6 +236,8 @@ class ProgressiveResizingHparams(AlgorithmHparams):
     initial_scale: float = hp.optional(doc="Initial scale factor", default=0.5)
     finetune_fraction: float = hp.optional(doc="Fraction of training to reserve for finetuning on full-sized inputs",
                                            default=0.2)
+    delay_fraction: float = hp.optional(doc="Fraction of training before resizing ramp begins", default=0.0)
+    pin_sizes: int = hp.optional(doc="Make sizes a multiple of this number.", default=1)
     resize_targets: bool = hp.optional(doc="Also resize targets", default=False)
 
     def initialize_object(self) -> ProgressiveResizing:
